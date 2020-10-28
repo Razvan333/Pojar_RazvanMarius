@@ -20,21 +20,10 @@ namespace Pojar_RazvanMarius
                 mDoughnuts[Index] = value;
             }
         }
-    }
-    class DoughnutMachine
-    {
-
         public delegate void DoughnutCompleteDelegate();
         public event DoughnutCompleteDelegate DoughnutComplete;
         DispatcherTimer doughnutTimer;
-        public enum DoughnutType
-        {
-            Glazed,
-            Sugar,
-            Lemon,
-            Chocolate,
-            Vanilla
-        }
+
         private void InitializeComponent()
         {
             this.doughnutTimer = new DispatcherTimer();
@@ -64,6 +53,18 @@ namespace Pojar_RazvanMarius
                 doughnutTimer.Interval = new TimeSpan(0, 0, value);
             }
         }
+        private DoughnutType mFlavor;
+        public DoughnutType Flavor
+        {
+            get
+            {
+                return mFlavor;
+            }
+            set
+            {
+                mFlavor = value;
+            }
+        }
         public void MakeDoughnuts(DoughnutType dFlavor)
         {
 
@@ -78,7 +79,15 @@ namespace Pojar_RazvanMarius
             }
             doughnutTimer.Start();
         }
-  
+    }
+        public enum DoughnutType
+        {
+            Glazed,
+            Sugar,
+            Lemon,
+            Chocolate,
+            Vanilla
+        }
         class Doughnut
     {
         private DoughnutType mFlavor;
